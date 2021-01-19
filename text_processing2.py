@@ -28,8 +28,33 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
-    return digit_string
+    digit_string = ""
+    for i in input_string:
+        if i.isdigit():
+            i = int(i)
+            if i == 0:
+                digit_string += "zero"
+            elif i == 1:
+                digit_string += "one"
+            elif i == 2:
+                digit_string += "two"
+            elif i == 3:
+                digit_string += "three"
+            elif i == 4:
+                digit_string += "four"
+            elif i == 5:
+                digit_string += "five"
+            elif i == 6:
+                digit_string += "six"
+            elif i == 7:
+                digit_string += "seven"
+            elif i == 8:
+                digit_string += "eight"
+            elif i == 9:
+                digit_string += "nine"
+            digit_string += " "
+    
+    return digit_string.rstrip()
 
 
 """
@@ -38,7 +63,6 @@ def digits_to_words(input_string):
 두번째로는, 변수 이름을 대소문자 구별해 구분자 (delimiter)없이 쓰는 경우가 있습니다. 
 이 두번째의 경우에는 첫번째 단어는 소문자로, 그 후에 오는 단어들의 첫번째 글자들은 대문자로 쓰입니다 (ex. camelCaseVariable). 
 """
-
 
 def to_camel_case(underscore_str):
     """
@@ -64,5 +88,16 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+    tmp = [i for i in underscore_str.split('_') if i]
+    camelcase_str = ""
+    for i in tmp:
+        if len(tmp) == 1:
+            camelcase_str = i
+            break
+        
+        if camelcase_str:
+            camelcase_str += i.capitalize()
+        else:
+            camelcase_str = i.lower()
+
     return camelcase_str
